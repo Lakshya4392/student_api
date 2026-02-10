@@ -10,8 +10,15 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.get('/', handleHealth);
+app.get('/', (req, res) => res.json({ message: "BFHL API is Live", official_email: OFFICIAL_EMAIL }));
 app.get('/health', handleHealth);
+app.get('/debug', (req, res) => {
+    res.json({
+        email_set: !!process.env.OFFICIAL_EMAIL,
+        ai_key_set: !!process.env.GEMINI_API_KEY,
+        node_env: process.env.NODE_ENV
+    });
+});
 app.post('/bfhl', handleBFHL);
 
 // 405/404 handling
