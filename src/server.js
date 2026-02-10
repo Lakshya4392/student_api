@@ -12,10 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.get('/', handleHealth);
 app.get('/health', handleHealth);
 app.post('/bfhl', handleBFHL);
 
 // 405 Method Not Allowed Handler for defined routes
+app.all('/', (req, res) => {
+    res.status(405).json({
+        is_success: false,
+        official_email: OFFICIAL_EMAIL,
+        error: "Method Not Allowed. Use GET."
+    });
+});
+
 app.all('/health', (req, res) => {
     res.status(405).json({
         is_success: false,
@@ -62,6 +71,10 @@ app.use((err, req, res, next) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;

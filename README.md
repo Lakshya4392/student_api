@@ -102,3 +102,22 @@ node verify_project.js
 **Lakshya**  
 GitHub: [Lakshya4392](https://github.com/Lakshya4392)  
 Email: [lkbassnation@gmail.com](mailto:lkbassnation@gmail.com)
+
+---
+
+## 🌍 Vercel Deployment Guide
+
+### 1. Manual Deployment
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run `vercel` in the project root.
+3. Add Environment Variables in Vercel Dashboard:
+   - `OFFICIAL_EMAIL`: `lkbassnation@gmail.com`
+   - `GEMINI_API_KEY`: `your_key_here`
+   - `NODE_ENV`: `production`
+
+### 2. GitHub Deployment (Recommended)
+1. Push this code to a **Public GitHub Repo**.
+2. Go to [Vercel](https://vercel.com) and click **"New Project"**.
+3. Import your repo.
+4. Correct the **Environment Variables** in the settings.
+5. Click **Deploy**.
